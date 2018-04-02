@@ -47,4 +47,99 @@ formField.addEventListener('keyup', function(e) {
     content.innerHTML = html;
   }
   request.send();
+  var repoRequest = new XMLHttpRequest();
+  repoCall = 'https://api.github.com/users/siddhantk232/repos?sort=created:asc&per_page=5'
+  repoCall = 'https://api.github.com/users/' + query + '/repos' + '?sort=created:asc&per_page=5';
+  repoRequest.open('GET', repoCall);
+  repoRequest.onload = function() {
+    // console.log(repoRequest.responseText);
+    var repoData = JSON.parse(repoRequest.responseText);
+    var repoContainer = document.getElementById('repos');
+    var repoInfo = `
+      <div class="container mt">
+        <h3>Latest Repos</h3>
+        <hr>
+        <div class="container-box">
+          <div class="container-content">
+            <div class="row">
+              <div class="five columns">
+                <h6>${repoData[0].name}</h6>
+              </div>
+              <div class="seven columns">
+                  <span class="ml">Forks: ${repoData[0].forks}</span>
+                  <spanc class="ml">Watchers: ${repoData[0].watchers}</span>
+                  <span class="ml">Forks: ${repoData[0].stargazers_count}</span>
+                  <a href="${repoData[0].html_url}" target="_blank" class="button button-primary custom">Repo Page</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container-box">
+            <div class="container-content">
+              <div class="row">
+                <div class="five columns">
+                  <h6>${repoData[1].name}</h6>
+                </div>
+                <div class="seven columns">
+                    <span class="ml">Forks: ${repoData[1].forks}</span>
+                    <spanc class="ml">Watchers: ${repoData[1].watchers}</span>
+                    <span class="ml">Forks: ${repoData[1].stargazers_count}</span>
+                    <a href="${repoData[0].html_url}" target="_blank" class="button button-primary custom">Repo Page</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="container-box">
+              <div class="container-content">
+                <div class="row">
+                  <div class="five columns">
+                    <h6>${repoData[2].name}</h6>
+                  </div>
+                  <div class="seven columns">
+                      <span class="ml">Forks: ${repoData[2].forks}</span>
+                      <spanc class="ml">Watchers: ${repoData[2].watchers}</span>
+                      <span class="ml">Forks: ${repoData[2].stargazers_count}</span>
+                      <a href="${repoData[0].html_url}" target="_blank" class="button button-primary custom">Repo Page</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="container-box">
+                <div class="container-content">
+                  <div class="row">
+                    <div class="five columns">
+                      <h6>${repoData[3].name}</h6>
+                    </div>
+                    <div class="seven columns">
+                        <span class="ml">Forks: ${repoData[3].forks}</span>
+                        <spanc class="ml">Watchers: ${repoData[3].watchers}</span>
+                        <span class="ml">Forks: ${repoData[3].stargazers_count}</span>
+                        <a href="${repoData[0].html_url}" target="_blank" class="button button-primary custom">Repo Page</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="container-box">
+                  <div class="container-content">
+                    <div class="row">
+                      <div class="five columns">
+                        <h6>${repoData[4].name}</h6>
+                      </div>
+                      <div class="seven columns">
+                          <span class="ml">Forks: ${repoData[4].forks}</span>
+                          <spanc class="ml">Watchers: ${repoData[4].watchers}</span>
+                          <span class="ml">Forks: ${repoData[4].stargazers_count}</span>
+                          <a href="${repoData[0].html_url}" target="_blank" class="button button-primary custom">Repo Page</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+        </div>
+      </div>
+    `
+
+    repoContainer.innerHTML = repoInfo;
+
+  }
+  repoRequest.send();
 });
