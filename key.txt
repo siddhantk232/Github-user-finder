@@ -1,6 +1,0 @@
-
-Client ID
-  06652048b4dbb624e363
-Client Secret
-  48685e282a90934bd92e53f3fbe881ea6f6666d2
-
